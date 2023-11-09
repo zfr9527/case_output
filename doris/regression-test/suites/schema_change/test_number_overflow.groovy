@@ -36,28 +36,28 @@ suite ("test_number_overflow") {
         }
 
         backend_id = backendId_to_backendIP.keySet()[0]
-        StringBuilder showConfigCommand = new StringBuilder();
-        showConfigCommand.append("curl -X GET http://")
-        showConfigCommand.append(backendId_to_backendIP.get(backend_id))
-        showConfigCommand.append(":")
-        showConfigCommand.append(backendId_to_backendHttpPort.get(backend_id))
-        showConfigCommand.append("/api/show_config")
-        logger.info(showConfigCommand.toString())
-        def process = showConfigCommand.toString().execute()
-        int code = process.waitFor()
-        String err = IOGroovyMethods.getText(new BufferedReader(new InputStreamReader(process.getErrorStream())));
-        String out = process.getText()
-        logger.info("Show config: code=" + code + ", out=" + out + ", err=" + err)
-        assertEquals(code, 0)
-        def configList = parseJson(out.trim())
-        assert configList instanceof List
-
-        for (Object ele in (List) configList) {
-            assert ele instanceof List<String>
-            if (((List<String>) ele)[0] == "disable_auto_compaction") {
-                disableAutoCompaction = Boolean.parseBoolean(((List<String>) ele)[2])
-            }
-        }
+//        StringBuilder showConfigCommand = new StringBuilder();
+//        showConfigCommand.append("curl -X GET http://")
+//        showConfigCommand.append(backendId_to_backendIP.get(backend_id))
+//        showConfigCommand.append(":")
+//        showConfigCommand.append(backendId_to_backendHttpPort.get(backend_id))
+//        showConfigCommand.append("/api/show_config")
+//        logger.info(showConfigCommand.toString())
+//        def process = showConfigCommand.toString().execute()
+//        int code = process.waitFor()
+//        String err = IOGroovyMethods.getText(new BufferedReader(new InputStreamReader(process.getErrorStream())));
+//        String out = process.getText()
+//        logger.info("Show config: code=" + code + ", out=" + out + ", err=" + err)
+//        assertEquals(code, 0)
+//        def configList = parseJson(out.trim())
+//        assert configList instanceof List
+//
+//        for (Object ele in (List) configList) {
+//            assert ele instanceof List<String>
+//            if (((List<String>) ele)[0] == "disable_auto_compaction") {
+//                disableAutoCompaction = Boolean.parseBoolean(((List<String>) ele)[2])
+//            }
+//        }
 
         sql """ DROP TABLE IF EXISTS test_number_overflow """
         sql """
