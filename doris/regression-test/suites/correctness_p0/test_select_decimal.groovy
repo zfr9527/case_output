@@ -16,8 +16,8 @@
 // under the License.
 
 suite("test_select_decimal") {
-    sql """set enable_date_conversion=false;"""
-//    sql """set enable_decimal_conversion=false;"""
+//    sql """set enable_date_conversion=false;"""
+    sql """set enable_decimal_conversion=false;"""
     sql """set disable_decimalv2=false;"""
     sql """set disable_datev1=false;"""
     qt_select1 'select cast(19888.8999999 as decimal(12,2));'
