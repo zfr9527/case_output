@@ -20,24 +20,25 @@
 // **Note**: default db will be create if not exist
 defaultDb = "regression_test"
 
-// add useLocalSessionState so that the jdbc will not send
-// init cmd like: select @@session.tx_read_only
-// at each time we connect.
-// add allowLoadLocalInfile so that the jdbc can execute mysql load data from client.
-jdbcUrl = "jdbc:mysql://127.0.0.1:9030/?useLocalSessionState=true&allowLoadLocalInfile=true"
+jdbcUrl = "jdbc:mysql://172.30.0.37:9330/?useLocalSessionState=true&allowLoadLocalInfile=true"
 jdbcUser = "root"
 jdbcPassword = ""
 
-feHttpAddress = "127.0.0.1:8030"
+feHttpAddress = "172.30.0.37:8330"
 feHttpUser = "root"
 feHttpPassword = ""
+
+beHttpAddress = "172.30.0.37:8340"
 
 // set DORIS_HOME by system properties
 // e.g. java -DDORIS_HOME=./
 suitePath = "${DORIS_HOME}/regression-test/suites"
 dataPath = "${DORIS_HOME}/regression-test/data"
-pluginPath = "${DORIS_HOME}/regression-test/plugins"
-realDataPath = "${DORIS_HOME}/regression-test/realdata"
+
+//exclude groups and exclude suites is more prior than include groups and include suites.
+excludeDirectories = "github_events,tpcds_sf1000,usercases/BS"
+excludeTestGroups = ""
+excludeTestSuites = "test_string_function_like_pushdown"
 
 // will test <group>/<suite>.groovy
 // empty group will test all group
@@ -46,13 +47,6 @@ testGroups = ""
 testSuites = ""
 // empty directories will test all directories
 testDirectories = ""
-
-// this groups will not be executed
-excludeGroups = ""
-// this suites will not be executed
-excludeSuites = "test_broker_load"
-// this directories will not be executed
-excludeDirectories = "segcompaction_p1"
 
 customConf1 = "test_custom_conf_value"
 
@@ -63,65 +57,9 @@ hdfsUser = "doris-test"
 hdfsPasswd = ""
 brokerName = "broker_name"
 
-// broker load test config
-enableBrokerLoad=true
-ak=""
-sk=""
-
-// jdbc connector test config
-// To enable jdbc test, you need first start mysql/pg container.
-// See `docker/thirdparties/start-thirdparties-docker.sh`
-enableJdbcTest=false
-mysql_57_port=3316
-pg_14_port=5442
-oracle_11_port=1521
-sqlserver_2022_port=1433
-clickhouse_22_port=8123
-
-// hive catalog test config
-// To enable jdbc test, you need first start hive container.
-// See `docker/thirdparties/start-thirdparties-docker.sh`
-enableHiveTest=false
-hms_port=9183
-hdfs_port=8120
-
-// elasticsearch catalog test config
-// See `docker/thirdparties/start-thirdparties-docker.sh`
-enableEsTest=false
-es_6_port=19200
-es_7_port=29200
-es_8_port=39200
-
-
-//hive  catalog test config for bigdata
-enableExternalHiveTest = false
-extHiveHmsHost = "***.**.**.**"
-extHiveHmsPort = 7004
-extHdfsPort = 4007
-extHiveHmsUser = "****"
-extHiveHmsPassword= "***********"
-
-//mysql jdbc connector test config for bigdata
-enableExternalMysqlTest = false
-extMysqlHost = "***.**.**.**"
-extMysqlPort = 3306
-extMysqlUser = "****"
-extMysqlPassword = "***********"
-
-//postgresql jdbc connector test config for bigdata
-enableExternalPgTest = false
-extPgHost = "***.**.**.*"
-extPgPort = 5432
-extPgUser = "****"
-extPgPassword = "***********"
-
-// elasticsearch external test config for bigdata
-enableExternalEsTest = false
-extEsHost = "***********"
-extEsPort = 9200
-extEsUser = "*******"
-extEsPassword = "***********"
-
-s3Endpoint = "cos.ap-hongkong.myqcloud.com"
-s3BucketName = "doris-build-hk-1308700295"
-s3Region = "ap-hongkong"
+customConf1 = "test_custom_conf_value"
+s3Endpoint = "cos.ap-beijing.myqcloud.com"
+s3BucketName = "doris-build-1308700295"
+ak = "AKIDAE2aqpY0B7oFPIvHMBj01lFSO3RYOxFH"
+sk = "nJYWDepkQqzrWv3uWsxlJ0ScV7SXLs88"
+sf1DataPath = "http://doris-build-1308700295.cos.ap-beijing.myqcloud.com/regression"
