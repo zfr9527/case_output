@@ -30,6 +30,7 @@ suite("test_dynamic_partition") {
             "dynamic_partition.prefix"="p",
             "dynamic_partition.time_unit"="DAY",
             "dynamic_partition.create_history_partition"="true",
+            "dynamic_partition.storage_medium" = "HDD",
             "dynamic_partition.replication_allocation" = "tag.location.default: 1")
         """
     List<List<Object>> result  = sql "show tables like 'dy_par'"
@@ -53,6 +54,7 @@ suite("test_dynamic_partition") {
             "dynamic_partition.prefix"="p",
             "dynamic_partition.time_unit"="DAY",
             "dynamic_partition.create_history_partition"="true",
+            "dynamic_partition.storage_medium" = "HDD",
             "dynamic_partition.replication_allocation" = "tag.location.default: 1")
         """
     result  = sql "show tables like 'dy_par_bucket_set_by_distribution'"
@@ -77,6 +79,7 @@ suite("test_dynamic_partition") {
             "dynamic_partition.prefix"="p",
             "dynamic_partition.time_unit"="DAY",
             "dynamic_partition.create_history_partition"="true",
+            "dynamic_partition.storage_medium" = "HDD",
             "dynamic_partition.replication_allocation" = "tag.location.not_exist_tag: 1")
         """
         // check exception message contains
@@ -96,6 +99,7 @@ suite("test_dynamic_partition") {
             "dynamic_partition.prefix"="p",
             "dynamic_partition.time_unit"="DAY",
             "dynamic_partition.create_history_partition"="true",
+            "dynamic_partition.storage_medium" = "HDD",
             "dynamic_partition.replication_allocation" = "tag.location.default: 1")
         """
     result  = sql "show tables like 'dy_par'"
@@ -118,6 +122,7 @@ suite("test_dynamic_partition") {
             "dynamic_partition.prefix"="p",
             "dynamic_partition.time_unit"="DAY",
             "dynamic_partition.create_history_partition"="true",
+            "dynamic_partition.storage_medium" = "HDD",
             "dynamic_partition.replication_allocation" = "tag.location.not_exist_tag: 1")
         """
         // check exception message contains

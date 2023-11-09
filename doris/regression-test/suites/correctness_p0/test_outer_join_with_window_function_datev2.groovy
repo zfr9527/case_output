@@ -212,6 +212,20 @@ suite("test_outer_join_with_window_function_datev2") {
         DISTRIBUTED BY HASH(`game`, `plat`) BUCKETS 4
         PROPERTIES (
         "replication_allocation" = "tag.location.default: 1",
+        "dynamic_partition.enable" = "true",
+        "dynamic_partition.time_unit" = "MONTH",
+        "dynamic_partition.time_zone" = "Asia/Shanghai",
+        "dynamic_partition.start" = "-2147483648",
+        "dynamic_partition.end" = "3",
+        "dynamic_partition.prefix" = "p",
+        "dynamic_partition.replication_allocation" = "tag.location.default: 1",
+        "dynamic_partition.buckets" = "4",
+        "dynamic_partition.create_history_partition" = "true",
+        "dynamic_partition.history_partition_num" = "50",
+        "dynamic_partition.hot_partition_num" = "2",
+        "dynamic_partition.reserved_history_periods" = "NULL",
+        "dynamic_partition.start_day_of_month" = "1",
+        "dynamic_partition.storage_medium" = "HDD",
         "in_memory" = "false",
         "storage_format" = "V2");
     """

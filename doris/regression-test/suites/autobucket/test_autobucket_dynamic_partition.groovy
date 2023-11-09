@@ -28,6 +28,7 @@ suite("test_autobucket_dynamic_partition") {
             "dynamic_partition.start" = "-2",
             "dynamic_partition.end" = "2",
             "dynamic_partition.prefix" = "p",
+            "dynamic_partition.storage_medium" = "HDD",
             "replication_allocation" = "tag.location.default: 1"
         )
         """

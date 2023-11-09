@@ -221,6 +221,7 @@ suite("test_outer_join_with_with_window_function") {
         "dynamic_partition.hot_partition_num" = "2",
         "dynamic_partition.reserved_history_periods" = "NULL",
         "dynamic_partition.start_day_of_month" = "1",
+        "dynamic_partition.storage_medium" = "HDD",
         "in_memory" = "false",
         "storage_format" = "V2");
     """

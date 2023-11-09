@@ -39,7 +39,8 @@ suite("test_create_view") {
         "dynamic_partition.start" = "-3",
         "dynamic_partition.end" = "3",
         "dynamic_partition.prefix" = "p",
-        "dynamic_partition.buckets" = "3"
+        "dynamic_partition.buckets" = "3",
+        "dynamic_partition.storage_medium" = "HDD"
         );
     """
     sql """
